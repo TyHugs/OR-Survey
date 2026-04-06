@@ -43,13 +43,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.page-wrap { max-width: 620px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+.page-wrap { max-width: 540px; margin: 0 auto; padding: 0.5rem 0.75rem 1.5rem; }
 
 /* Header */
 .survey-header {
   background: var(--um-blue);
   border-radius: var(--r-lg) var(--r-lg) 0 0;
-  padding: 2.25rem 2.25rem 2rem;
+  padding: 0.75rem 1.25rem 0.6rem;
   position: relative;
   overflow: hidden;
 }
@@ -70,11 +70,11 @@ body {
 }
 .survey-header h1 {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 500;
   color: #FFFFFF;
   letter-spacing: -0.3px;
-  margin-bottom: 6px;
+  margin-bottom: 3px;
 }
 .survey-header p {
   font-size: 14px;
@@ -89,20 +89,8 @@ body {
   border: 1px solid var(--border);
   border-top: none;
   border-radius: 0 0 var(--r-lg) var(--r-lg);
-  padding: 2.25rem;
+  padding: 0.75rem 1.25rem 1rem;
   box-shadow: var(--sh-sm);
-}
-
-/* Context block */
-.context-block {
-  background: var(--bg);
-  border-left: 3px solid var(--um-maize);
-  padding: 14px 18px;
-  border-radius: 0 var(--r) var(--r) 0;
-  margin-bottom: 1.75rem;
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--text-secondary);
 }
 
 /* Sections */
@@ -116,7 +104,7 @@ body {
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--um-blue);
   margin-bottom: 4px;
@@ -124,13 +112,13 @@ body {
 .section-desc {
   font-size: 13px;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.35rem;
   line-height: 1.6;
 }
 .section-divider {
   border: none;
   border-top: 1px solid var(--border-light);
-  margin: 2rem 0;
+  margin: 0.5rem 0;
 }
 
 /* Form elements */
@@ -163,7 +151,7 @@ input[type="text"]:focus, textarea:focus, select:focus {
 textarea { resize: vertical; }
 
 /* Site groups */
-.site-group { margin-bottom: 1.5rem; }
+.site-group { margin-bottom: 0.5rem; }
 .site-label {
   display: inline-flex;
   align-items: center;
@@ -173,15 +161,15 @@ textarea { resize: vertical; }
   color: var(--um-blue);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  padding-bottom: 8px;
+  padding-bottom: 5px;
   border-bottom: 2px solid var(--um-maize);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .check-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 14px;
+  padding: 4px 14px;
   margin: 0 -14px;
   border-radius: var(--r);
   cursor: pointer;
@@ -212,8 +200,8 @@ textarea { resize: vertical; }
   background: var(--bg);
   border: 1px solid var(--border-light);
   border-radius: var(--r-md);
-  padding: 1.25rem 1.25rem 1rem;
-  margin-bottom: 10px;
+  padding: 0.75rem 1rem 0.5rem;
+  margin-bottom: 6px;
   transition: border-color 0.2s;
 }
 .request-card:focus-within { border-color: var(--border); }
@@ -223,13 +211,13 @@ textarea { resize: vertical; }
   color: var(--text-hint);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 .field-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 .field-grid label {
   font-size: 11.5px;
@@ -281,7 +269,7 @@ textarea { resize: vertical; }
   letter-spacing: 0.2px;
   cursor: pointer;
   transition: all 0.2s;
-  margin-top: 2rem;
+  margin-top: 0.75rem;
 }
 .submit-btn:hover { background: var(--um-blue-80); box-shadow: var(--sh-md); }
 .submit-btn:active { transform: scale(0.995); }
@@ -291,7 +279,7 @@ textarea { resize: vertical; }
   text-align: center;
   font-size: 11.5px;
   color: var(--text-hint);
-  margin-top: 14px;
+  margin-top: 8px;
   letter-spacing: 0.1px;
 }
 
@@ -412,7 +400,7 @@ textarea { resize: vertical; }
 .admin-loading { text-align: center; padding: 2rem; color: var(--text-hint); font-size: 13px; }
 
 @media (max-width: 600px) {
-  .page-wrap { padding: 1.5rem 0.75rem 2.5rem; }
+  .page-wrap { padding: 0.5rem 0.5rem 2rem; }
   .survey-header { padding: 1.5rem 1.5rem 1.25rem; }
   .survey-header h1 { font-size: 21px; }
   .survey-card { padding: 1.5rem; }
@@ -434,16 +422,10 @@ textarea { resize: vertical; }
     <div class="survey-card">
       <form id="surveyForm">
 
-        <div class="context-block">
-          With faculty turnover and natural shifts in schedules, we have Tuesday OR block time opening up this summer at UH and Brighton. We'd like to give you the opportunity to claim dedicated blocks before this time converts to first-come, first-served for the department.
-        </div>
-
-        <div style="margin-bottom: 2rem;">
+        <div style="margin-bottom: 0.5rem;">
           <label class="field-label">Name <span class="req">*</span></label>
           <input type="text" id="facultyName" placeholder="Your name" required>
         </div>
-
-        <hr class="section-divider">
 
         <div class="section-label">Part 1</div>
         <h2 class="section-title">Available blocks</h2>
@@ -506,7 +488,7 @@ textarea { resize: vertical; }
         <h1>Summer OR block interest</h1>
         <p>Tuesdays, June – August 2026</p>
       </div>
-      <div class="survey-card" style="text-align:center;padding:3rem 2rem;">
+      <div class="survey-card" style="text-align:center;padding:2rem 1.75rem;">
         <div class="check-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
