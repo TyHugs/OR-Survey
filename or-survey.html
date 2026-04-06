@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer OR Block Interest — UM Urology</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --um-blue: #00274C;
+  --um-maize: #FFCB05;
+  --gold: #C4943D;
+  --bg: #F7F6F3;
+  --card-bg: #FFFFFF;
+  --text: #1a1a1a;
+  --text-secondary: #5c5c5c;
+  --text-hint: #8a8a8a;
+  --border: #e2e0db;
+  --accent-green: #1B7340;
+  --accent-green-bg: #E8F5E9;
+  --accent-blue-bg: #E3F2FD;
+  --accent-amber-bg: #FFF8E1;
+  --accent-red: #C0392B;
+  --r: 10px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --sh-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --sh-md: 0 4px 12px rgba(0,0,0,0.08);
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.cc-nav {
+  background: var(--um-blue);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cc-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+.cc-nav a:hover { color: #fff; }
+.cc-nav .sep { color: rgba(255,255,255,0.3); font-size: 12px; }
+.cc-nav .current { color: var(--um-maize); font-weight: 600; }
+.page-wrap { max-width: 680px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+.setup-banner {
+  background: #FFF3CD; border: 1px solid #F0D78C; border-radius: var(--r-lg);
+  padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;
+}
+.setup-banner h3 { font-size: 15px; font-weight: 600; color: #856404; margin-bottom: 6px; }
+.setup-banner p { font-size: 13px; color: #856404; line-height: 1.7; }
+.setup-banner code { background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+.setup-banner .dismiss-btn {
+  margin-top: 10px; padding: 6px 14px; background: #856404; color: #fff;
+  border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+}
+.survey-header {
+  background: var(--um-blue); border-radius: var(--r-lg) var(--r-lg) 0 0;
+  padding: 1.75rem 2rem; position: relative; overflow: hidden;
+}
+.survey-header::after {
+  content: ''; position: absolute; right: -30px; top: -30px;
+  width: 160px; height: 160px; border-radius: 50%; background: rgba(255,203,5,0.08);
+}
+.survey-header h1 { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--um-maize); margin-bottom: 6px; }
+.survey-header p { font-size: 14px; color: rgba(255,255,255,0.7); }
+.maize-bar { height: 4px; background: var(--um-maize); }
+.survey-card {
+  background: var(--card-bg); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 var(--r-lg) var(--r-lg); padding: 2rem;
+}
+.section-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--um-blue); margin-bottom: 4px; }
+.section-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 1.25rem; }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 1.75rem 0; }
+label.field-label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+label.field-label .req { color: var(--accent-red); }
+input[type="text"], textarea, select {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--r);
+  font-family: var(--font-body); font-size: 14px; color: var(--text); background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus, textarea:focus, select:focus {
+  outline: none; border-color: var(--um-blue); box-shadow: 0 0 0 3px rgba(0,39,76,0.1);
+}
+textarea { resize: vertical; }
+.site-group { margin-bottom: 1.25rem; }
+.site-label {
+  display: inline-block; font-size: 13px; font-weight: 600; color: var(--um-blue);
+  background: rgba(0,39,76,0.06); padding: 5px 14px; border-radius: 6px; margin-bottom: 10px;
+}
+.check-row {
+  display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+  border-radius: 8px; cursor: pointer; transition: background 0.15s; user-select: none;
+}
+.check-row:hover { background: rgba(0,39,76,0.03); }
+.check-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--um-blue); cursor: pointer; flex-shrink: 0; }
+.check-row span { font-size: 14px; color: var(--text); }
+.request-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-md);
+  padding: 1.25rem; margin-bottom: 12px;
+}
+.request-card-header {
+  font-size: 13px; font-weight: 600; color: var(--text-hint);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;
+}
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.field-grid label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; display: block; }
+.add-request-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;
+  border: 1px dashed var(--border); border-radius: var(--r); background: transparent;
+  font-family: var(--font-body); font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: all 0.2s;
+}
+.add-request-btn:hover { border-color: var(--um-blue); color: var(--um-blue); background: rgba(0,39,76,0.03); }
+.submit-btn {
+  display: block; width: 100%; padding: 14px; background: var(--um-blue); color: #fff; border: none;
+  border-radius: var(--r); font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; margin-top: 1.5rem;
+}
+.submit-btn:hover { background: #003366; transform: translateY(-1px); box-shadow: var(--sh-md); }
+.submit-btn:active { transform: translateY(0); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.footer-note { text-align: center; font-size: 12px; color: var(--text-hint); margin-top: 12px; }
+.spinner {
+  display: inline-block; width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+  border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-msg {
+  background: #FDF0F0; border: 1px solid #E8D5D5; color: var(--accent-red);
+  padding: 10px 14px; border-radius: var(--r); font-size: 13px; margin-top: 12px; display: none;
+}
+.confirmation { display: none; }
+.check-circle {
+  width: 64px; height: 64px; border-radius: 50%; background: var(--accent-green-bg);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+}
+.check-circle svg { width: 32px; height: 32px; color: var(--accent-green); }
+.admin-toggle {
+  position: fixed; bottom: 20px; right: 20px; background: var(--um-blue); color: var(--um-maize);
+  border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+  box-shadow: var(--sh-md); display: flex; align-items: center; justify-content: center;
+  z-index: 100; transition: transform 0.2s;
+}
+.admin-toggle:hover { transform: scale(1.1); }
+.admin-panel {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 200; padding: 2rem; overflow-y: auto;
+}
+.admin-panel.open { display: flex; align-items: flex-start; justify-content: center; }
+.admin-content {
+  background: var(--card-bg); border-radius: var(--r-lg); width: 100%; max-width: 920px;
+  max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.admin-header {
+  background: var(--um-blue); padding: 1.25rem 1.5rem;
+  border-radius: var(--r-lg) var(--r-lg) 0 0; display: flex;
+  align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10;
+}
+.admin-header h2 { color: var(--um-maize); font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+.admin-close { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 24px; cursor: pointer; padding: 4px 8px; }
+.admin-close:hover { color: #fff; }
+.admin-body { padding: 1.5rem; }
+.admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+.stat-card { background: var(--bg); border-radius: var(--r); padding: 1rem; text-align: center; }
+.stat-card .stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--um-blue); }
+.stat-card .stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.heatmap-section { margin-bottom: 1.5rem; }
+.heatmap-section h3 { font-size: 14px; font-weight: 600; color: var(--um-blue); margin-bottom: 10px; }
+.heatmap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.heat-cell {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; border-radius: 8px; font-size: 13px;
+}
+.heat-cell .heat-label { color: var(--text); }
+.heat-cell .heat-count { font-weight: 600; font-family: var(--font-display); font-size: 16px; }
+.response-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-md);
+  padding: 1.25rem; margin-bottom: 12px;
+}
+.response-card h3 { font-size: 16px; font-weight: 600; color: var(--um-blue); margin-bottom: 4px; }
+.response-card .timestamp { font-size: 12px; color: var(--text-hint); margin-bottom: 12px; }
+.tag {
+  display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px;
+  border-radius: 20px; margin: 2px 4px 2px 0;
+}
+.tag-uh { background: var(--accent-blue-bg); color: #0D47A1; }
+.tag-brighton { background: var(--accent-green-bg); color: #1B5E20; }
+.tag-growth { background: var(--accent-amber-bg); color: #E65100; }
+.no-responses { text-align: center; padding: 2rem; color: var(--text-hint); font-size: 14px; }
+.admin-actions { display: flex; gap: 8px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.admin-btn {
+  padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--r); background: #fff;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500; cursor: pointer;
+  color: var(--text); transition: all 0.15s;
+}
+.admin-btn:hover { background: var(--bg); border-color: var(--um-blue); }
+.admin-loading { text-align: center; padding: 2rem; color: var(--text-hint); font-size: 14px; }
+@media (max-width: 600px) {
+  .page-wrap { padding: 1rem 0.5rem 2rem; }
+  .survey-header { padding: 1.25rem; }
+  .survey-header h1 { font-size: 22px; }
+  .survey-card { padding: 1.25rem; }
+  .field-grid { grid-template-columns: 1fr; }
+  .admin-panel { padding: 0.5rem; }
+  .heatmap-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="cc-nav">
+  <a href="../">Command Center</a>
+  <span class="sep">&#8250;</span>
+  <span class="current">OR Survey</span>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="setup-banner" id="setupBanner">
+    <h3>One-time setup — connect to Google Sheets</h3>
+    <p>
+      <strong>Step 1.</strong> Create a new Google Sheet (name it anything, e.g., "OR Survey Responses").<br>
+      <strong>Step 2.</strong> In the Sheet, go to <strong>Extensions &#8594; Apps Script</strong>.<br>
+      <strong>Step 3.</strong> Delete any code in the editor and paste the Apps Script code (provided separately).<br>
+      <strong>Step 4.</strong> Click <strong>Deploy &#8594; New deployment</strong>. Set type = <strong>Web app</strong>, Execute as = <strong>Me</strong>, Who has access = <strong>Anyone</strong>. Click Deploy.<br>
+      <strong>Step 5.</strong> Copy the Web app URL. Open this HTML file and paste it where it says <code>APPS_SCRIPT_URL</code> near the top of the <code>&lt;script&gt;</code> section.<br>
+      <strong>Step 6.</strong> Push to GitHub. Done — every submission flows into your Sheet automatically.
+    </p>
+    <button class="dismiss-btn" onclick="this.parentElement.style.display='none'">Got it, hide this</button>
+  </div>
+
+  <div id="surveyView">
+    <div class="survey-header">
+      <h1>Summer OR block interest</h1>
+      <p>Department of Urology — Tuesday blocks, June–August 2026</p>
+    </div>
+    <div class="maize-bar"></div>
+    <div class="survey-card">
+      <form id="surveyForm">
+        <div style="margin-bottom: 1.5rem;">
+          <label class="field-label">Your name <span class="req">*</span></label>
+          <input type="text" id="facultyName" placeholder="e.g., Smith, John" required>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">Available Tuesday blocks</h2>
+        <p class="section-desc">Check every date you'd be interested in picking up.</p>
+
+        <div class="site-group">
+          <div class="site-label">University Hospital</div>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 9 – UH"><span>Tuesday, June 9</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 30 – UH"><span>Tuesday, June 30</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jul 14 – UH"><span>Tuesday, July 14</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Aug 11 – UH"><span>Tuesday, August 11</span></label>
+        </div>
+
+        <div class="site-group">
+          <div class="site-label">Brighton</div>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 9 – Brighton"><span>Tuesday, June 9</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 16 – Brighton"><span>Tuesday, June 16</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 30 – Brighton"><span>Tuesday, June 30</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jul 14 – Brighton"><span>Tuesday, July 14</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jul 21 – Brighton"><span>Tuesday, July 21</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Aug 11 – Brighton"><span>Tuesday, August 11</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Aug 18 – Brighton"><span>Tuesday, August 18</span></label>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label class="field-label">Comments on available slots</label>
+          <textarea id="availComments" rows="2" placeholder="Optional — anything we should know about your interest in the dates above?"></textarea>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">Future OR growth interest</h2>
+        <p class="section-desc">Optional — if new OR time becomes available in the future, where and when would you want it? This helps us advocate for additional block allocations on your behalf.</p>
+
+        <div id="requestCards">
+          <div class="request-card" data-request="1">
+            <div class="request-card-header">Request 1</div>
+            <div class="field-grid">
+              <div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>C&amp;W</option><option>West Shore</option><option>Other</option></select></div>
+              <div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
+            </div>
+            <div class="field-grid">
+              <div><label>Week # in rotation</label><select class="req-week"><option value="">Select week</option><option>Week 1</option><option>Week 2</option><option>Week 3</option><option>Week 4</option><option>Week 5</option><option>Any</option></select></div>
+              <div><label>Robot needed?</label><select class="req-robot"><option value="">Select</option><option>Yes</option><option>No</option><option>Preferred but not required</option></select></div>
+            </div>
+            <div><label>Notes</label><input type="text" class="req-notes" placeholder="e.g., case type, volume goals, scheduling constraints"></div>
+          </div>
+        </div>
+
+        <button type="button" class="add-request-btn" id="addRequestBtn">+ Add another request</button>
+        <div class="error-msg" id="errorMsg"></div>
+        <button type="submit" class="submit-btn" id="submitBtn">Submit my interest</button>
+        <p class="footer-note">Your responses go directly to Tyler and will shape our OR allocation strategy.</p>
+      </form>
+    </div>
+
+    <div class="confirmation" id="confirmation">
+      <div class="survey-header">
+        <h1>Summer OR block interest</h1>
+        <p>Department of Urology — Tuesday blocks, June–August 2026</p>
+      </div>
+      <div class="maize-bar"></div>
+      <div class="survey-card" style="text-align:center;padding:3rem 2rem;">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 style="font-family:var(--font-display);font-size:22px;color:var(--um-blue);margin-bottom:8px;">Response submitted</h2>
+        <p style="color:var(--text-secondary);font-size:14px;">Thanks for your input — it'll directly inform our OR allocation decisions.</p>
+        <button type="button" class="submit-btn" style="max-width:260px;margin:1.5rem auto 0;" onclick="resetForm()">Submit another response</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="admin-toggle" onclick="toggleAdmin()" title="View responses">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+</button>
+
+<div class="admin-panel" id="adminPanel" onclick="if(event.target===this)toggleAdmin()">
+  <div class="admin-content">
+    <div class="admin-header">
+      <h2>Survey responses</h2>
+      <button class="admin-close" onclick="toggleAdmin()">&times;</button>
+    </div>
+    <div class="admin-body" id="adminBody">
+      <div class="admin-loading">Loading responses from Google Sheets...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+//  PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
+// ================================================================
+const APPS_SCRIPT_URL = '';
+// ================================================================
+
+if (APPS_SCRIPT_URL) {
+  var b = document.getElementById('setupBanner');
+  if (b) b.style.display = 'none';
+}
+
+var requestCount = 1;
+document.getElementById('addRequestBtn').addEventListener('click', function() {
+  requestCount++;
+  if (requestCount > 5) return;
+  var card = document.createElement('div');
+  card.className = 'request-card';
+  card.dataset.request = requestCount;
+  card.innerHTML =
+    '<div class="request-card-header">Request ' + requestCount + '</div>' +
+    '<div class="field-grid">' +
+      '<div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>C&amp;W</option><option>West Shore</option><option>Other</option></select></div>' +
+      '<div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>' +
+    '</div>' +
+    '<div class="field-grid">' +
+      '<div><label>Week # in rotation</label><select class="req-week"><option value="">Select week</option><option>Week 1</option><option>Week 2</option><option>Week 3</option><option>Week 4</option><option>Week 5</option><option>Any</option></select></div>' +
+      '<div><label>Robot needed?</label><select class="req-robot"><option value="">Select</option><option>Yes</option><option>No</option><option>Preferred but not required</option></select></div>' +
+    '</div>' +
+    '<div><label>Notes</label><input type="text" class="req-notes" placeholder="e.g., case type, volume goals, scheduling constraints"></div>';
+  document.getElementById('requestCards').appendChild(card);
+  if (requestCount >= 5) this.style.display = 'none';
+});
+
+document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var errorEl = document.getElementById('errorMsg');
+  errorEl.style.display = 'none';
+  var name = document.getElementById('facultyName').value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!APPS_SCRIPT_URL) {
+    errorEl.textContent = 'Survey is not yet connected to Google Sheets. See setup instructions above.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  var availChecks = document.querySelectorAll('input[name="avail"]:checked');
+  var available = Array.from(availChecks).map(function(c) { return c.value; });
+  var comments = document.getElementById('availComments').value.trim();
+  var cards = document.querySelectorAll('.request-card');
+  var requests = [];
+  cards.forEach(function(card) {
+    var loc = card.querySelector('.req-location').value;
+    var day = card.querySelector('.req-day').value;
+    var week = card.querySelector('.req-week').value;
+    var robot = card.querySelector('.req-robot').value;
+    var notes = card.querySelector('.req-notes').value.trim();
+    if (loc || day || week) requests.push({ location: loc, day: day, week: week, robot: robot, notes: notes });
+  });
+
+  var payload = { action: 'submit', name: name, available: available, comments: comments, requests: requests };
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Submitting...';
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    });
+    document.getElementById('surveyForm').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    errorEl.textContent = 'Something went wrong. Please try again or email Tyler directly.';
+    errorEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Submit my interest';
+  }
+});
+
+function resetForm() {
+  document.getElementById('surveyForm').reset();
+  document.getElementById('surveyForm').style.display = 'block';
+  document.getElementById('confirmation').style.display = 'none';
+  var container = document.getElementById('requestCards');
+  while (container.children.length > 1) container.removeChild(container.lastChild);
+  requestCount = 1;
+  document.getElementById('addRequestBtn').style.display = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleAdmin() {
+  var panel = document.getElementById('adminPanel');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) loadAdmin();
+}
+
+async function loadAdmin() {
+  var body = document.getElementById('adminBody');
+  body.innerHTML = '<div class="admin-loading">Loading responses from Google Sheets...</div>';
+  if (!APPS_SCRIPT_URL) {
+    body.innerHTML = '<div class="no-responses">Google Sheets not connected yet. Complete setup first.</div>';
+    return;
+  }
+  try {
+    var resp = await fetch(APPS_SCRIPT_URL + '?action=getAll');
+    var data = await resp.json();
+    renderAdmin(data.responses || []);
+  } catch (err) {
+    body.innerHTML = '<div class="no-responses">Could not load responses. You can view them directly in the Google Sheet.</div>';
+  }
+}
+
+function renderAdmin(responses) {
+  var body = document.getElementById('adminBody');
+  var total = responses.length;
+  var slotCounts = {};
+  var growthTotal = 0;
+  responses.forEach(function(r) {
+    (r.available || []).forEach(function(s) { slotCounts[s] = (slotCounts[s] || 0) + 1; });
+    growthTotal += (r.requests || []).length;
+  });
+  var totalSlots = Object.values(slotCounts).reduce(function(a,b){return a+b;}, 0);
+
+  var allSlots = [
+    'Jun 9 – UH','Jun 30 – UH','Jul 14 – UH','Aug 11 – UH',
+    'Jun 9 – Brighton','Jun 16 – Brighton','Jun 30 – Brighton',
+    'Jul 14 – Brighton','Jul 21 – Brighton','Aug 11 – Brighton','Aug 18 – Brighton'
+  ];
+  var maxCount = Math.max(1, Math.max.apply(null, Object.values(slotCounts).length ? Object.values(slotCounts) : [0]));
+
+  function heatColor(count) {
+    if (count === 0) return 'var(--bg)';
+    var i = count / maxCount;
+    if (i < 0.33) return '#E3F2FD';
+    if (i < 0.66) return '#90CAF9';
+    return '#64B5F6';
+  }
+
+  var heatHtml = '<div class="heatmap-section"><h3>Interest heatmap by date</h3><div class="heatmap-grid">';
+  allSlots.forEach(function(slot) {
+    var c = slotCounts[slot] || 0;
+    heatHtml += '<div class="heat-cell" style="background:' + heatColor(c) + '"><span class="heat-label">' + slot + '</span><span class="heat-count">' + c + '</span></div>';
+  });
+  heatHtml += '</div></div>';
+
+  var html =
+    '<div class="admin-stats">' +
+      '<div class="stat-card"><div class="stat-num">' + total + '</div><div class="stat-label">Responses</div></div>' +
+      '<div class="stat-card"><div class="stat-num">' + totalSlots + '</div><div class="stat-label">Slot selections</div></div>' +
+      '<div class="stat-card"><div class="stat-num">' + growthTotal + '</div><div class="stat-label">Growth requests</div></div>' +
+    '</div>' +
+    '<div class="admin-actions">' +
+      '<button class="admin-btn" onclick="loadAdmin()">Refresh</button>' +
+    '</div>' +
+    heatHtml;
+
+  if (responses.length === 0) {
+    html += '<div class="no-responses">No responses yet. Share the survey link with faculty.</div>';
+  } else {
+    responses.slice().reverse().forEach(function(r) {
+      var tags = '';
+      (r.available || []).forEach(function(slot) {
+        var isUH = slot.indexOf('UH') !== -1;
+        tags += '<span class="tag ' + (isUH ? 'tag-uh' : 'tag-brighton') + '">' + slot + '</span>';
+      });
+      (r.requests || []).forEach(function(req) {
+        if (req.location || req.day) {
+          tags += '<span class="tag tag-growth">Growth: ' + (req.location||'') + ' ' + (req.day||'') + ' ' + (req.week||'') + '</span>';
+        }
+      });
+      var extras = '';
+      if (r.comments) extras += '<p style="font-size:13px;color:var(--text-secondary);margin-top:8px;"><strong>Comments:</strong> ' + escHtml(r.comments) + '</p>';
+      (r.requests || []).forEach(function(req) {
+        var d = [];
+        if (req.robot) d.push('Robot: ' + req.robot);
+        if (req.notes) d.push(req.notes);
+        if (d.length) extras += '<p style="font-size:13px;color:var(--text-secondary);margin-top:4px;"><strong>Growth detail:</strong> ' + escHtml(d.join(' | ')) + '</p>';
+      });
+      html +=
+        '<div class="response-card">' +
+          '<h3>' + escHtml(r.name || 'Unknown') + '</h3>' +
+          '<div class="timestamp">' + escHtml(r.timestamp || '') + '</div>' +
+          '<div style="margin-bottom:8px;">' + tags + '</div>' +
+          extras +
+        '</div>';
+    });
+  }
+  body.innerHTML = html;
+}
+
+function escHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+</script>
+
+</body>
+</html>
