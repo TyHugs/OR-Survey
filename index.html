@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OR Block Interest — Summer 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --um-blue: #00274C;
+  --um-blue-90: #0B3259;
+  --um-blue-80: #193D66;
+  --um-maize: #FFCB05;
+  --gold: #C4943D;
+  --bg: #F5F4F1;
+  --card-bg: #FFFFFF;
+  --text: #1C1C1C;
+  --text-secondary: #555555;
+  --text-hint: #999999;
+  --border: #E0DDD8;
+  --border-light: #ECEAE5;
+  --accent-green: #1B7340;
+  --accent-green-bg: #EBF5EE;
+  --accent-blue-bg: #E8F0F8;
+  --accent-amber-bg: #FDF6E3;
+  --accent-red: #B33A3A;
+  --r: 8px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --sh-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --sh-md: 0 4px 16px rgba(0,0,0,0.07);
+  --sh-lg: 0 8px 30px rgba(0,0,0,0.10);
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap { max-width: 620px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+
+/* Header */
+.survey-header {
+  background: var(--um-blue);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  padding: 2.25rem 2.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.survey-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--um-maize);
+}
+.survey-header::after {
+  content: '';
+  position: absolute;
+  right: -40px; bottom: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,203,5,0.06);
+}
+.survey-header h1 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+.survey-header p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.2px;
+}
+
+/* Card */
+.survey-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+  padding: 2.25rem;
+  box-shadow: var(--sh-sm);
+}
+
+/* Context block */
+.context-block {
+  background: var(--bg);
+  border-left: 3px solid var(--um-maize);
+  padding: 14px 18px;
+  border-radius: 0 var(--r) var(--r) 0;
+  margin-bottom: 1.75rem;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* Sections */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-hint);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--um-blue);
+  margin-bottom: 4px;
+}
+.section-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 2rem 0;
+}
+
+/* Form elements */
+label.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: 0.1px;
+}
+label.field-label .req { color: var(--accent-red); font-weight: 400; }
+
+input[type="text"], textarea, select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--um-blue);
+  box-shadow: 0 0 0 3px rgba(0,39,76,0.08);
+}
+textarea { resize: vertical; }
+
+/* Site groups */
+.site-group { margin-bottom: 1.5rem; }
+.site-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--um-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--um-maize);
+  margin-bottom: 8px;
+}
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  margin: 0 -14px;
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: background 0.15s;
+  user-select: none;
+}
+.check-row:hover { background: rgba(0,39,76,0.025); }
+.check-row input[type="checkbox"] {
+  width: 17px; height: 17px;
+  accent-color: var(--um-blue);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.check-row .date-text {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 400;
+}
+.check-row .date-detail {
+  font-size: 12px;
+  color: var(--text-hint);
+  margin-left: auto;
+  font-weight: 400;
+}
+
+/* Growth request cards */
+.request-card {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-md);
+  padding: 1.25rem 1.25rem 1rem;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+.request-card:focus-within { border-color: var(--border); }
+.request-card-header {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-hint);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.field-grid label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  display: block;
+  letter-spacing: 0.1px;
+}
+.field-grid select, .field-grid input[type="text"] {
+  font-size: 13px;
+  padding: 9px 12px;
+}
+
+.add-request-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px dashed var(--border);
+  border-radius: var(--r);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-hint);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.1px;
+}
+.add-request-btn:hover {
+  border-color: var(--um-blue);
+  color: var(--um-blue);
+  background: rgba(0,39,76,0.02);
+}
+
+/* Submit */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--um-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--r);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 2rem;
+}
+.submit-btn:hover { background: var(--um-blue-80); box-shadow: var(--sh-md); }
+.submit-btn:active { transform: scale(0.995); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.footer-note {
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--text-hint);
+  margin-top: 14px;
+  letter-spacing: 0.1px;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block; width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+  border-radius: 50%; animation: spin 0.6s linear infinite;
+  vertical-align: middle; margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Error */
+.error-msg {
+  background: #FDF2F2; border: 1px solid #EBDADA; color: var(--accent-red);
+  padding: 10px 14px; border-radius: var(--r); font-size: 13px;
+  margin-top: 12px; display: none;
+}
+
+/* Confirmation */
+.confirmation { display: none; }
+.check-circle {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--accent-green-bg);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+.check-circle svg { width: 28px; height: 28px; color: var(--accent-green); }
+
+/* Admin panel */
+.admin-toggle {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--um-blue); color: var(--um-maize);
+  border: none; width: 44px; height: 44px; border-radius: 50%;
+  cursor: pointer; box-shadow: var(--sh-md);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; transition: transform 0.2s;
+}
+.admin-toggle:hover { transform: scale(1.08); }
+
+.admin-panel {
+  display: none; position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45); z-index: 200;
+  padding: 2rem; overflow-y: auto;
+}
+.admin-panel.open { display: flex; align-items: flex-start; justify-content: center; }
+.admin-content {
+  background: var(--card-bg); border-radius: var(--r-lg);
+  width: 100%; max-width: 900px; max-height: 90vh;
+  overflow-y: auto; box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+.admin-header {
+  background: var(--um-blue); padding: 1.25rem 1.5rem;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 10;
+}
+.admin-header h2 {
+  color: #fff; font-family: var(--font-display);
+  font-size: 17px; font-weight: 500;
+}
+.admin-close {
+  background: none; border: none;
+  color: rgba(255,255,255,0.5); font-size: 22px;
+  cursor: pointer; padding: 4px 8px; transition: color 0.15s;
+}
+.admin-close:hover { color: #fff; }
+.admin-body { padding: 1.5rem; }
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px; margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: var(--bg); border-radius: var(--r);
+  padding: 1rem; text-align: center;
+}
+.stat-card .stat-num {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 500; color: var(--um-blue);
+}
+.stat-card .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.heatmap-section { margin-bottom: 1.5rem; }
+.heatmap-section h3 { font-size: 13px; font-weight: 600; color: var(--um-blue); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+.heatmap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.heat-cell {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; border-radius: var(--r); font-size: 13px;
+}
+.heat-cell .heat-label { color: var(--text); }
+.heat-cell .heat-count { font-weight: 600; font-family: var(--font-display); font-size: 15px; }
+
+.response-card {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 10px;
+}
+.response-card h3 { font-size: 15px; font-weight: 600; color: var(--um-blue); margin-bottom: 3px; }
+.response-card .timestamp { font-size: 11.5px; color: var(--text-hint); margin-bottom: 10px; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 3px 9px; border-radius: 4px; margin: 2px 4px 2px 0;
+}
+.tag-uh { background: var(--accent-blue-bg); color: #0D4780; }
+.tag-brighton { background: var(--accent-green-bg); color: #1B5E30; }
+.tag-growth { background: var(--accent-amber-bg); color: #B36D00; }
+
+.no-responses { text-align: center; padding: 2rem; color: var(--text-hint); font-size: 13px; }
+.admin-actions { display: flex; gap: 8px; margin-bottom: 1.25rem; }
+.admin-btn {
+  padding: 7px 14px; border: 1px solid var(--border); border-radius: var(--r);
+  background: #fff; font-family: var(--font-body); font-size: 12.5px;
+  font-weight: 500; cursor: pointer; color: var(--text); transition: all 0.15s;
+}
+.admin-btn:hover { background: var(--bg); border-color: var(--um-blue); }
+.admin-loading { text-align: center; padding: 2rem; color: var(--text-hint); font-size: 13px; }
+
+@media (max-width: 600px) {
+  .page-wrap { padding: 1.5rem 0.75rem 2.5rem; }
+  .survey-header { padding: 1.5rem 1.5rem 1.25rem; }
+  .survey-header h1 { font-size: 21px; }
+  .survey-card { padding: 1.5rem; }
+  .field-grid { grid-template-columns: 1fr; }
+  .admin-panel { padding: 0.5rem; }
+  .heatmap-grid { grid-template-columns: 1fr; }
+  .check-row { margin: 0 -8px; padding: 10px 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div id="surveyView">
+    <div class="survey-header">
+      <h1>Summer OR block interest</h1>
+      <p>Tuesdays, June – August 2026</p>
+    </div>
+    <div class="survey-card">
+      <form id="surveyForm">
+
+        <div class="context-block">
+          With faculty turnover and natural shifts in schedules, we have Tuesday OR block time opening up this summer at UH and Brighton. We'd like to give you the opportunity to claim dedicated blocks before this time converts to first-come, first-served for the department.
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <label class="field-label">Name <span class="req">*</span></label>
+          <input type="text" id="facultyName" placeholder="Your name" required>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-label">Part 1</div>
+        <h2 class="section-title">Available blocks</h2>
+        <p class="section-desc">Select any dates you would like to claim.</p>
+
+        <div class="site-group">
+          <div class="site-label">University Hospital</div>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 9 – UH"><span class="date-text">Tuesday, June 9</span><span class="date-detail">Wk 2</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 30 – UH"><span class="date-text">Tuesday, June 30</span><span class="date-detail">Wk 5</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jul 14 – UH"><span class="date-text">Tuesday, July 14</span><span class="date-detail">Wk 2</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Aug 11 – UH"><span class="date-text">Tuesday, August 11</span><span class="date-detail">Wk 2</span></label>
+        </div>
+
+        <div class="site-group">
+          <div class="site-label">Brighton</div>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 9 – Brighton"><span class="date-text">Tuesday, June 9</span><span class="date-detail">Wk 2</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 16 – Brighton"><span class="date-text">Tuesday, June 16</span><span class="date-detail">Wk 3</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jun 30 – Brighton"><span class="date-text">Tuesday, June 30</span><span class="date-detail">Wk 5</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jul 14 – Brighton"><span class="date-text">Tuesday, July 14</span><span class="date-detail">Wk 2</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Jul 21 – Brighton"><span class="date-text">Tuesday, July 21</span><span class="date-detail">Wk 3</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Aug 11 – Brighton"><span class="date-text">Tuesday, August 11</span><span class="date-detail">Wk 2</span></label>
+          <label class="check-row"><input type="checkbox" name="avail" value="Aug 18 – Brighton"><span class="date-text">Tuesday, August 18</span><span class="date-detail">Wk 3</span></label>
+        </div>
+
+        <div style="margin-bottom: 0;">
+          <label class="field-label">Comments</label>
+          <textarea id="availComments" rows="2" placeholder="Optional"></textarea>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-label">Part 2 — Optional</div>
+        <h2 class="section-title">Future growth interest</h2>
+        <p class="section-desc">If new OR time becomes available, where and when would you want it? This helps us advocate for additional block allocations.</p>
+
+        <div id="requestCards">
+          <div class="request-card" data-request="1">
+            <div class="request-card-header">Request 1</div>
+            <div class="field-grid">
+              <div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>C&amp;W</option><option>West Shore</option><option>Other</option></select></div>
+              <div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
+            </div>
+            <div class="field-grid">
+              <div><label>Week in rotation</label><select class="req-week"><option value="">Select week</option><option>Week 1</option><option>Week 2</option><option>Week 3</option><option>Week 4</option><option>Week 5</option><option>Any</option></select></div>
+              <div><label>Robot needed?</label><select class="req-robot"><option value="">Select</option><option>Yes</option><option>No</option><option>Preferred but not required</option></select></div>
+            </div>
+            <div><label>Notes</label><input type="text" class="req-notes" placeholder="Case type, volume goals, scheduling constraints, etc."></div>
+          </div>
+        </div>
+
+        <button type="button" class="add-request-btn" id="addRequestBtn">+ Add another request</button>
+        <div class="error-msg" id="errorMsg"></div>
+        <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+        <p class="footer-note">Responses are collected centrally and will directly inform block allocation decisions.</p>
+      </form>
+    </div>
+
+    <div class="confirmation" id="confirmation">
+      <div class="survey-header">
+        <h1>Summer OR block interest</h1>
+        <p>Tuesdays, June – August 2026</p>
+      </div>
+      <div class="survey-card" style="text-align:center;padding:3rem 2rem;">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 style="font-family:var(--font-display);font-size:20px;font-weight:500;color:var(--um-blue);margin-bottom:8px;">Response received</h2>
+        <p style="color:var(--text-secondary);font-size:14px;">Thank you. Your input will directly inform our allocation decisions.</p>
+        <button type="button" class="submit-btn" style="max-width:220px;margin:1.5rem auto 0;font-size:13px;" onclick="resetForm()">Submit another response</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin -->
+<button class="admin-toggle" onclick="toggleAdmin()" title="View responses">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+</button>
+
+<div class="admin-panel" id="adminPanel" onclick="if(event.target===this)toggleAdmin()">
+  <div class="admin-content">
+    <div class="admin-header">
+      <h2>Survey responses</h2>
+      <button class="admin-close" onclick="toggleAdmin()">&times;</button>
+    </div>
+    <div class="admin-body" id="adminBody">
+      <div class="admin-loading">Loading responses...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var APPS_SCRIPT_URL = '';
+
+var requestCount = 1;
+document.getElementById('addRequestBtn').addEventListener('click', function() {
+  requestCount++;
+  if (requestCount > 5) return;
+  var card = document.createElement('div');
+  card.className = 'request-card';
+  card.dataset.request = requestCount;
+  card.innerHTML =
+    '<div class="request-card-header">Request ' + requestCount + '</div>' +
+    '<div class="field-grid">' +
+      '<div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>C&amp;W</option><option>West Shore</option><option>Other</option></select></div>' +
+      '<div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>' +
+    '</div>' +
+    '<div class="field-grid">' +
+      '<div><label>Week in rotation</label><select class="req-week"><option value="">Select week</option><option>Week 1</option><option>Week 2</option><option>Week 3</option><option>Week 4</option><option>Week 5</option><option>Any</option></select></div>' +
+      '<div><label>Robot needed?</label><select class="req-robot"><option value="">Select</option><option>Yes</option><option>No</option><option>Preferred but not required</option></select></div>' +
+    '</div>' +
+    '<div><label>Notes</label><input type="text" class="req-notes" placeholder="Case type, volume goals, scheduling constraints, etc."></div>';
+  document.getElementById('requestCards').appendChild(card);
+  if (requestCount >= 5) this.style.display = 'none';
+});
+
+document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var errorEl = document.getElementById('errorMsg');
+  errorEl.style.display = 'none';
+  var name = document.getElementById('facultyName').value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!APPS_SCRIPT_URL) {
+    errorEl.textContent = 'Survey is not yet connected. Please contact Tyler.';
+    errorEl.style.display = 'block';
+    return;
+  }
+  var availChecks = document.querySelectorAll('input[name="avail"]:checked');
+  var available = Array.from(availChecks).map(function(c) { return c.value; });
+  var comments = document.getElementById('availComments').value.trim();
+  var cards = document.querySelectorAll('.request-card');
+  var requests = [];
+  cards.forEach(function(card) {
+    var loc = card.querySelector('.req-location').value;
+    var day = card.querySelector('.req-day').value;
+    var week = card.querySelector('.req-week').value;
+    var robot = card.querySelector('.req-robot').value;
+    var notes = card.querySelector('.req-notes').value.trim();
+    if (loc || day || week) requests.push({ location: loc, day: day, week: week, robot: robot, notes: notes });
+  });
+  var payload = { action: 'submit', name: name, available: available, comments: comments, requests: requests };
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Submitting...';
+  try {
+    await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) });
+    document.getElementById('surveyForm').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    errorEl.textContent = 'Something went wrong. Please try again or contact Tyler directly.';
+    errorEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Submit';
+  }
+});
+
+function resetForm() {
+  document.getElementById('surveyForm').reset();
+  document.getElementById('surveyForm').style.display = 'block';
+  document.getElementById('confirmation').style.display = 'none';
+  var container = document.getElementById('requestCards');
+  while (container.children.length > 1) container.removeChild(container.lastChild);
+  requestCount = 1;
+  document.getElementById('addRequestBtn').style.display = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleAdmin() {
+  var panel = document.getElementById('adminPanel');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) loadAdmin();
+}
+
+async function loadAdmin() {
+  var body = document.getElementById('adminBody');
+  body.innerHTML = '<div class="admin-loading">Loading responses...</div>';
+  if (!APPS_SCRIPT_URL) {
+    body.innerHTML = '<div class="no-responses">Google Sheets not connected.</div>';
+    return;
+  }
+  try {
+    var resp = await fetch(APPS_SCRIPT_URL + '?action=getAll');
+    var data = await resp.json();
+    renderAdmin(data.responses || []);
+  } catch (err) {
+    body.innerHTML = '<div class="no-responses">Could not load responses. View them directly in the Google Sheet.</div>';
+  }
+}
+
+function renderAdmin(responses) {
+  var body = document.getElementById('adminBody');
+  var total = responses.length;
+  var slotCounts = {};
+  var growthTotal = 0;
+  responses.forEach(function(r) {
+    (r.available || []).forEach(function(s) { slotCounts[s] = (slotCounts[s] || 0) + 1; });
+    growthTotal += (r.requests || []).length;
+  });
+  var totalSlots = Object.values(slotCounts).reduce(function(a,b){return a+b;}, 0);
+  var allSlots = [
+    'Jun 9 – UH','Jun 30 – UH','Jul 14 – UH','Aug 11 – UH',
+    'Jun 9 – Brighton','Jun 16 – Brighton','Jun 30 – Brighton',
+    'Jul 14 – Brighton','Jul 21 – Brighton','Aug 11 – Brighton','Aug 18 – Brighton'
+  ];
+  var maxCount = Math.max(1, Math.max.apply(null, Object.values(slotCounts).length ? Object.values(slotCounts) : [0]));
+  function heatColor(count) {
+    if (count === 0) return 'var(--bg)';
+    var i = count / maxCount;
+    if (i < 0.33) return '#E8F0F8';
+    if (i < 0.66) return '#B8D4ED';
+    return '#7AB3DB';
+  }
+  var heatHtml = '<div class="heatmap-section"><h3>Interest by date</h3><div class="heatmap-grid">';
+  allSlots.forEach(function(slot) {
+    var c = slotCounts[slot] || 0;
+    heatHtml += '<div class="heat-cell" style="background:' + heatColor(c) + '"><span class="heat-label">' + slot + '</span><span class="heat-count">' + c + '</span></div>';
+  });
+  heatHtml += '</div></div>';
+  var html =
+    '<div class="admin-stats">' +
+      '<div class="stat-card"><div class="stat-num">' + total + '</div><div class="stat-label">Responses</div></div>' +
+      '<div class="stat-card"><div class="stat-num">' + totalSlots + '</div><div class="stat-label">Selections</div></div>' +
+      '<div class="stat-card"><div class="stat-num">' + growthTotal + '</div><div class="stat-label">Growth requests</div></div>' +
+    '</div>' +
+    '<div class="admin-actions">' +
+      '<button class="admin-btn" onclick="loadAdmin()">Refresh</button>' +
+    '</div>' +
+    heatHtml;
+  if (responses.length === 0) {
+    html += '<div class="no-responses">No responses yet.</div>';
+  } else {
+    responses.slice().reverse().forEach(function(r) {
+      var tags = '';
+      (r.available || []).forEach(function(slot) {
+        var isUH = slot.indexOf('UH') !== -1;
+        tags += '<span class="tag ' + (isUH ? 'tag-uh' : 'tag-brighton') + '">' + slot + '</span>';
+      });
+      (r.requests || []).forEach(function(req) {
+        if (req.location || req.day) {
+          tags += '<span class="tag tag-growth">Growth: ' + (req.location||'') + ' ' + (req.day||'') + ' ' + (req.week||'') + '</span>';
+        }
+      });
+      var extras = '';
+      if (r.comments) extras += '<p style="font-size:12.5px;color:var(--text-secondary);margin-top:8px;"><strong>Comments:</strong> ' + escHtml(r.comments) + '</p>';
+      (r.requests || []).forEach(function(req) {
+        var d = [];
+        if (req.robot) d.push('Robot: ' + req.robot);
+        if (req.notes) d.push(req.notes);
+        if (d.length) extras += '<p style="font-size:12.5px;color:var(--text-secondary);margin-top:4px;"><strong>Growth:</strong> ' + escHtml(d.join(' | ')) + '</p>';
+      });
+      html +=
+        '<div class="response-card">' +
+          '<h3>' + escHtml(r.name || 'Unknown') + '</h3>' +
+          '<div class="timestamp">' + escHtml(r.timestamp || '') + '</div>' +
+          '<div style="margin-bottom:8px;">' + tags + '</div>' +
+          extras +
+        '</div>';
+    });
+  }
+  body.innerHTML = html;
+}
+
+function escHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+</script>
+
+</body>
+</html>
