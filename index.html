@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OR Block Interest — Summer 2026</title>
+<title>OR Block Interest</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -416,8 +416,8 @@ textarea { resize: vertical; }
 <div class="page-wrap">
   <div id="surveyView">
     <div class="survey-header">
-      <h1>Summer OR block interest</h1>
-      <p>Tuesdays, June – August 2026</p>
+      <h1>OR Block Interest</h1>
+      <p>Faculty block allocation planning</p>
     </div>
     <div class="survey-card">
       <form id="surveyForm">
@@ -428,8 +428,31 @@ textarea { resize: vertical; }
         </div>
 
         <div class="section-label">Part 1</div>
-        <h2 class="section-title">Available blocks</h2>
-        <p class="section-desc">Select any dates you would like to claim.</p>
+        <h2 class="section-title">Future growth interest</h2>
+        <p class="section-desc">Where and when would you like additional OR block time? Your responses will directly inform allocation decisions and advocacy for new blocks.</p>
+
+        <div id="requestCards">
+          <div class="request-card" data-request="1">
+            <div class="request-card-header">Request 1</div>
+            <div class="field-grid">
+              <div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>EAA</option><option>C&amp;W</option><option>Other</option></select></div>
+              <div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
+            </div>
+            <div class="field-grid">
+              <div><label>Week in rotation</label><select class="req-week"><option value="">Select week</option><option>Week 1</option><option>Week 2</option><option>Week 3</option><option>Week 4</option><option>Week 5</option><option>Any</option></select></div>
+              <div><label>Robot needed?</label><select class="req-robot"><option value="">Select</option><option>Yes</option><option>No</option><option>Preferred but not required</option></select></div>
+            </div>
+            <div><label>Notes</label><input type="text" class="req-notes" placeholder="Case type, volume goals, scheduling constraints, etc."></div>
+          </div>
+        </div>
+
+        <button type="button" class="add-request-btn" id="addRequestBtn">+ Add another request</button>
+
+        <hr class="section-divider">
+
+        <div class="section-label">Part 2</div>
+        <h2 class="section-title">Available blocks — Summer 2026</h2>
+        <p class="section-desc">The following Tuesday blocks are currently open. Select any dates you would like to claim.</p>
 
         <div class="site-group">
           <div class="site-label">University Hospital</div>
@@ -455,28 +478,6 @@ textarea { resize: vertical; }
           <textarea id="availComments" rows="2" placeholder="Optional"></textarea>
         </div>
 
-        <hr class="section-divider">
-
-        <div class="section-label">Part 2 — Optional</div>
-        <h2 class="section-title">Future growth interest</h2>
-        <p class="section-desc">If new OR time becomes available, where and when would you want it? This helps us advocate for additional block allocations.</p>
-
-        <div id="requestCards">
-          <div class="request-card" data-request="1">
-            <div class="request-card-header">Request 1</div>
-            <div class="field-grid">
-              <div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>C&amp;W</option><option>West Shore</option><option>Other</option></select></div>
-              <div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
-            </div>
-            <div class="field-grid">
-              <div><label>Week in rotation</label><select class="req-week"><option value="">Select week</option><option>Week 1</option><option>Week 2</option><option>Week 3</option><option>Week 4</option><option>Week 5</option><option>Any</option></select></div>
-              <div><label>Robot needed?</label><select class="req-robot"><option value="">Select</option><option>Yes</option><option>No</option><option>Preferred but not required</option></select></div>
-            </div>
-            <div><label>Notes</label><input type="text" class="req-notes" placeholder="Case type, volume goals, scheduling constraints, etc."></div>
-          </div>
-        </div>
-
-        <button type="button" class="add-request-btn" id="addRequestBtn">+ Add another request</button>
         <div class="error-msg" id="errorMsg"></div>
         <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
         <p class="footer-note">Responses are collected centrally and will directly inform block allocation decisions.</p>
@@ -485,8 +486,8 @@ textarea { resize: vertical; }
 
     <div class="confirmation" id="confirmation">
       <div class="survey-header">
-        <h1>Summer OR block interest</h1>
-        <p>Tuesdays, June – August 2026</p>
+        <h1>OR Block Interest</h1>
+        <p>Faculty block allocation planning</p>
       </div>
       <div class="survey-card" style="text-align:center;padding:2rem 1.75rem;">
         <div class="check-circle">
@@ -518,7 +519,7 @@ textarea { resize: vertical; }
 </div>
 
 <script>
-var APPS_SCRIPT_URL = '';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygjTfan33_dVj_Qi_XQ4BBqgcJy2_2cYmChwTh3RMUAgUN9dMaasX3jArPkptLU2ts/exec';
 
 var requestCount = 1;
 document.getElementById('addRequestBtn').addEventListener('click', function() {
@@ -530,7 +531,7 @@ document.getElementById('addRequestBtn').addEventListener('click', function() {
   card.innerHTML =
     '<div class="request-card-header">Request ' + requestCount + '</div>' +
     '<div class="field-grid">' +
-      '<div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>C&amp;W</option><option>West Shore</option><option>Other</option></select></div>' +
+      '<div><label>Location</label><select class="req-location"><option value="">Select site</option><option>UH</option><option>Brighton</option><option>EAA</option><option>C&amp;W</option><option>Other</option></select></div>' +
       '<div><label>Day of week</label><select class="req-day"><option value="">Select day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>' +
     '</div>' +
     '<div class="field-grid">' +
