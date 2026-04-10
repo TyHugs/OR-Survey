@@ -415,6 +415,7 @@ textarea { resize: vertical; }
 
 <div class="page-wrap">
   <div id="surveyView">
+   <div id="formContainer">
     <div class="survey-header">
       <h1>OR Block Interest</h1>
       <p>Faculty block allocation planning</p>
@@ -483,6 +484,7 @@ textarea { resize: vertical; }
         <p class="footer-note">Responses are collected centrally and will directly inform block allocation decisions.</p>
       </form>
     </div>
+   </div>
 
     <div class="confirmation" id="confirmation">
       <div class="survey-header">
@@ -573,7 +575,7 @@ document.getElementById('surveyForm').addEventListener('submit', async function(
   btn.innerHTML = '<span class="spinner"></span>Submitting...';
   try {
     await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) });
-    document.getElementById('surveyForm').style.display = 'none';
+    document.getElementById('formContainer').style.display = 'none';
     document.getElementById('confirmation').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (err) {
@@ -587,7 +589,7 @@ document.getElementById('surveyForm').addEventListener('submit', async function(
 
 function resetForm() {
   document.getElementById('surveyForm').reset();
-  document.getElementById('surveyForm').style.display = 'block';
+  document.getElementById('formContainer').style.display = 'block';
   document.getElementById('confirmation').style.display = 'none';
   var container = document.getElementById('requestCards');
   while (container.children.length > 1) container.removeChild(container.lastChild);
