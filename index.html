@@ -429,7 +429,7 @@ textarea { resize: vertical; }
         </div>
 
         <div class="section-label">Part 1</div>
-        <h2 class="section-title">Future growth interest</h2>
+        <h2 class="section-title">Future Growth Interest</h2>
         <p class="section-desc">Where and when would you like additional OR block time? Your responses will directly inform allocation decisions and advocacy for new blocks.</p>
 
         <div id="requestCards">
@@ -452,7 +452,7 @@ textarea { resize: vertical; }
         <hr class="section-divider">
 
         <div class="section-label">Part 2</div>
-        <h2 class="section-title">Available blocks — Summer 2026</h2>
+        <h2 class="section-title">Available Blocks — Summer 2026</h2>
         <p class="section-desc">The following Tuesday blocks are currently open. Select any dates you would like to claim.</p>
 
         <div class="site-group">
@@ -477,6 +477,16 @@ textarea { resize: vertical; }
         <div style="margin-bottom: 0;">
           <label class="field-label">Comments</label>
           <textarea id="availComments" rows="2" placeholder="Optional"></textarea>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-label">Part 3</div>
+        <h2 class="section-title">Additional Thoughts</h2>
+        <p class="section-desc">Anything else you'd like us to know.</p>
+
+        <div style="margin-bottom: 0;">
+          <textarea id="generalFeedback" rows="4" placeholder="Optional"></textarea>
         </div>
 
         <div class="error-msg" id="errorMsg"></div>
@@ -552,7 +562,8 @@ document.getElementById('surveyForm').addEventListener('submit', async function(
     var notes = card.querySelector('.req-notes').value.trim();
     if (loc || day || week) requests.push({ location: loc, day: day, week: week, robot: robot, notes: notes });
   });
-  var payload = { action: 'submit', name: name, available: available, comments: comments, requests: requests };
+  var feedback = document.getElementById('generalFeedback').value.trim();
+  var payload = { action: 'submit', name: name, available: available, comments: comments, requests: requests, feedback: feedback };
   var btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>Submitting...';
@@ -658,6 +669,7 @@ function renderAdmin(responses) {
       });
       var extras = '';
       if (r.comments) extras += '<p style="font-size:12.5px;color:var(--text-secondary);margin-top:8px;"><strong>Comments:</strong> ' + escHtml(r.comments) + '</p>';
+      if (r.feedback) extras += '<p style="font-size:12.5px;color:var(--text-secondary);margin-top:4px;"><strong>Feedback:</strong> ' + escHtml(r.feedback) + '</p>';
       (r.requests || []).forEach(function(req) {
         var d = [];
         if (req.robot) d.push('Robot: ' + req.robot);
